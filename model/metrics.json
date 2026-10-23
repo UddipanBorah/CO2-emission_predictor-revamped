@@ -1,0 +1,75 @@
+{
+  "model": "XGBoost",
+  "features": [
+    "Model year",
+    "Make",
+    "Vehicle class",
+    "Engine size (L)",
+    "Fuel type",
+    "Transmission type",
+    "Gears"
+  ],
+  "n_rows": 10059,
+  "best_params": {
+    "model__subsample": 0.6,
+    "model__reg_lambda": 20,
+    "model__n_estimators": 600,
+    "model__min_child_weight": 5,
+    "model__max_depth": 5,
+    "model__learning_rate": 0.05,
+    "model__colsample_bytree": 0.5
+  },
+  "validation": "GroupKFold(5) by model family for CV; family-disjoint 20% test; temporal 2015-21 -> 2022-24",
+  "grouped_cv": {
+    "R2": 0.8323200941085815,
+    "R2_std": 0.03873662167828165
+  },
+  "test_unseen_families": {
+    "R2": 0.8334764838218689,
+    "RMSE": 22.57119067930712,
+    "MAE": 16.74923324584961
+  },
+  "temporal_2022_24": {
+    "R2": 0.869265079498291,
+    "RMSE": 23.128306879267285,
+    "MAE": 16.393043518066406
+  },
+  "comparison": {
+    "Dummy (mean)": {
+      "CV_R2": -0.048209590442710934,
+      "CV_RMSE": 61.399683950188965,
+      "CV_MAE": 48.646224913796594
+    },
+    "Ridge": {
+      "CV_R2": 0.7881038947000365,
+      "CV_RMSE": 27.39798722323269,
+      "CV_MAE": 20.317384802632642
+    },
+    "Decision Tree": {
+      "CV_R2": 0.7258222872416603,
+      "CV_RMSE": 31.12470890521987,
+      "CV_MAE": 21.89337557922991
+    },
+    "Random Forest": {
+      "CV_R2": 0.7908446447242307,
+      "CV_RMSE": 27.262189810236702,
+      "CV_MAE": 19.359575184068408
+    },
+    "XGBoost": {
+      "CV_R2": 0.8132861018180847,
+      "CV_RMSE": 25.730892944335938,
+      "CV_MAE": 18.581035232543947
+    },
+    "XGBoost (log target)": {
+      "CV_R2": 0.8079975008964538,
+      "CV_RMSE": 26.15731735229492,
+      "CV_MAE": 19.102499389648436
+    }
+  },
+  "tuned_cv_r2": {
+    "XGBoost": 0.8323200941085815,
+    "XGBoost (log target)": 0.8296610236167907,
+    "Random Forest": 0.8193568449103911,
+    "Ridge": 0.7923041232955148
+  }
+}
